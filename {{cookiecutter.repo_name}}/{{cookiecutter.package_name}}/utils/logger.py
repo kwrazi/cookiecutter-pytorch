@@ -7,6 +7,7 @@ from .saving import log_path
 
 
 LOG_LEVEL = logging.INFO
+LOG_FORMAT = '%(asctime)s %(name)s[%(process)d] %(levelname)-8s[%(module)s:%(lineno)d] %(message)s'
 
 
 def setup_logging(run_config, log_config="logging.yml") -> None:
@@ -39,9 +40,20 @@ def setup_logging(run_config, log_config="logging.yml") -> None:
             handler["filename"] = str(run_path / handler["filename"])
 
     logging.config.dictConfig(config)
+    setup_logger(reconfigure=True)
 
 
-def setup_logger(name):
-    log = logging.getLogger(f'{{ cookiecutter.package_name }}.{name}')
-    log.setLevel(LOG_LEVEL)
+def setup_logger(name=None, log_level=LOG_LEVEL, **kw):
+    if name is not None:
+        log = logging.getLogger()
+    else:
+        log = logging.getLogger(f'pytorch_conv_lstm.{name}')
+    log.setLevel(log_level)
+    try:
+        import coloredlogs
+    except ModuleNotFoundError:
+        log.debug('coloredlogs not installed -- falling back to standard logging.')
+    else:
+        log_fmt = kw.pop('fmt', LOG_FORMAT)
+        coloredlogs.install(logger=log, level=log_level, fmt=log_fmt, **kw)
     return log

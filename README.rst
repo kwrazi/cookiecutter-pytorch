@@ -53,3 +53,5 @@ name, email, username, etc.
 Acknowledgements
 ================
 This template was based on `PyTorch Template <https://github.com/victoresque/pytorch-template>`_.
+
+This repository was forked from `khornlund/cookiecutter-pytorch <https://github.com/khornlund/cookiecutter-pytorch>`_.

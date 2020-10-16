@@ -1,0 +1,22 @@
+numpy
+scipy
+matplotlib
+pandas
+pytest
+flake8
+rope
+autopep8
+black
+coloredlogs
+click
+jupyter
+pyyaml
+torch>=1.6.0
+torchvision
+tensorboard>=1.14
+absl-py
+future
+tqdm
+pip
+# Editable install with no version control (pytorch-conv-lstm==0.0.1)
+-e .  # install package in development mode

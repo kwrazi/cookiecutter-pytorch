@@ -5,7 +5,7 @@ channels:
   - conda-forge
 
 dependencies:
-  - python=3.8
+  - python>=3.8
   - numpy
   - scipy
   - matplotlib
@@ -18,10 +18,10 @@ dependencies:
   - click
   - jupyter
   - pyyaml
-  - pytorch>=1.1.0
+  - pytorch>=1.6.0
   - torchvision
-  - cudatoolkit=10.0
-  - tensorboard>=1.14
+  - cudatoolkit>=10.0
+  - tensorboard>=2.3.0
   - absl-py
   - future
   - tqdm
